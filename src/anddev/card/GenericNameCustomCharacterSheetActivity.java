@@ -1,5 +1,6 @@
-package anddev.genericNameCustomCharacterSheet;
+package anddev.card;
 
+import anddev.genericNameCustomCharacterSheet.R;
 import android.app.Activity;
 import android.os.Bundle;
 
