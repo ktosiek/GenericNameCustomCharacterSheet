@@ -2,8 +2,8 @@ package anddev.card;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class FileSystemAccess {
 	 * @return
 	 * @throws IOException
 	 */
-	public List<FileReader> getTemplateFiles() throws IOException {
+	public List<InputStream> getTemplateFiles() throws IOException {
 		File directory = Environment.getExternalStorageDirectory();
 		return getFilesInDir(new File(directory + templatePath));
 	}
@@ -29,7 +29,7 @@ public class FileSystemAccess {
 	 * @return
 	 * @throws IOException
 	 */
-	public List<FileReader> getCharacterFiles(String templateType)
+	public List<InputStream> getCharacterFiles(String templateType)
 			throws IOException {
 		if(templateType.contains("/"))
 			throw new IOException("bad template name (no / allowed)");
@@ -37,14 +37,14 @@ public class FileSystemAccess {
 		return getFilesInDir(new File(directory + characterPath + "/" + templateType));
 	}
 
-	List<FileReader> getFilesInDir(File path) throws IOException {
+	List<InputStream> getFilesInDir(File path) throws IOException {
 		path.mkdirs();
 		if(!path.isDirectory())
 			throw new IOException("Can't access templates folder!");
 
-		List<FileReader> files = new ArrayList<FileReader>();
+		List<InputStream> files = new ArrayList<InputStream>();
 		for(String file : path.list())
-			files.add(new FileReader(path + "/" + file));
+			files.add(new FileInputStream(path + "/" + file));
 		return files;
 	}
 }
