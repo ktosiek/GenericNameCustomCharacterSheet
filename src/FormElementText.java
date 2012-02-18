@@ -1,53 +1,43 @@
 import android.content.Context;
-import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
-public class FormElementText extends View implements FormElement {
+public class FormElementText extends LinearLayout implements FormElement {
+	
+	TextView label;
+	EditText edit;
 
 	public FormElementText(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
+		label = new TextView(this.getContext());
+		edit = new EditText(this.getContext());
+	}
+	
+	@Override
+	public String getType() {
+		return "text";
 	}
 
 	@Override
 	public void setTitle(String v) {
-		// TODO Auto-generated method stub
-
+		label.setText(v);
 	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setName(String v) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return label.getText().toString();
 	}
 
 	@Override
 	public void setValue(String v) {
-		// TODO Auto-generated method stub
-
+		edit.setText(v);
 	}
 
 	@Override
 	public String getValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getType() {
-		return "text";
+		return edit.getText().toString();
 	}
 
 }
