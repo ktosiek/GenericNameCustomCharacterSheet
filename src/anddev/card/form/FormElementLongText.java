@@ -1,37 +1,44 @@
 package anddev.card.form;
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
-public class FormElementLongText extends View implements FormElement {
+public class FormElementLongText extends LinearLayout implements FormElement {
 
+	TextView label;
+	EditText edit;
+	
 	public FormElementLongText(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
+		label = new TextView(this.getContext());
+		edit = new EditText(this.getContext());
+		this.addView(label);
+		this.addView(edit);
+		edit.setLines(4);
 	}
 
 	@Override
 	public void setTitle(String v) {
-		// TODO Auto-generated method stub
-
+		label.setText(v);
 	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return label.getText().toString();
 	}
 
 	@Override
 	public void setValue(String v) {
-		// TODO Auto-generated method stub
-
+		edit.setText(v);
 	}
 
 	@Override
 	public String getValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return edit.getText().toString();
 	}
 
 	@Override
