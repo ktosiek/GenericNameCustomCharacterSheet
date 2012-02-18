@@ -1,7 +1,11 @@
 package anddev.card;
 
+<<<<<<< HEAD:src/anddev/card/GenericNameCustomCharacterSheetActivity.java
+import anddev.genericNameCustomCharacterSheet.R;
+=======
 import java.io.IOException;
 
+>>>>>>> tomek/master:src/anddev/genericNameCustomCharacterSheet/GenericNameCustomCharacterSheetActivity.java
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
