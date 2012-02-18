@@ -18,6 +18,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import anddev.card.form.FormElementFactory;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +66,8 @@ public class CardParser
 	
 	View procesNode(Node node)
 	{
+		FormElementFactory factory = new FormElementFactory();
+
 		if(node.hasChildNodes())
 		{
 			LinearLayout all = new LinearLayout(context);
@@ -79,8 +82,10 @@ public class CardParser
 		}
 		else
 		{
-			TextView t = new TextView(context);
-			t.setText("Tekst");
+			//(View)factory.getFormElement("long_text", this.getApplicationContext()).setTitle("TitLe").setValue("LeTit").get()
+			String title = node.getNodeName();
+			String type = node.getAttributes().getNamedItem("type").getNodeName(); 
+			String value = node.getAttributes().getNamedItem("value").getNodeName();
 			return t;
 		}
 	}
